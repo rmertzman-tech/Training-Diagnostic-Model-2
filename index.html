@@ -3,265 +3,1067 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 2: Diagnostic Practice (Enhanced)</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Ethics as Capability Development - Course Framework</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-bg {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-        
-        .progress-bar {
-            transition: width 0.3s ease;
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+
+        h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .tagline {
+            color: #777;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+             /* Make nav sticky */
+            position: sticky;
+            top: 10px;
+            background: rgba(240, 240, 250, 0.9); /* Add background for sticky */
+            padding: 10px;
+            border-radius: 12px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab-button {
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #667eea;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+            /* Add margin-top to prevent content hiding under sticky nav */
+            margin-top: 20px;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .slider-container input[type="range"] {
-            width: 100%;
-            height: 8px;
-            border-radius: 5px;
-            background: #e5e7eb;
-            outline: none;
-            -webkit-appearance: none;
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 2.4em;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
         }
-        
-        .slider-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
+
+        h3 {
+            color: #764ba2;
+            margin: 30px 0 20px 0;
+            font-size: 1.8em;
+        }
+
+        h4 {
+            color: #555;
+            margin: 20px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        .hero-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 6px solid #667eea;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+        }
+
+        .hero-box h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .mechanism-box {
+            background: white;
+            border: 4px solid #667eea;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .mechanism-box h3 {
+            color: #667eea;
+            text-align: center;
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        .three-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
             background: #667eea;
-            cursor: pointer;
-        }
-        
-        .slider-container input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
+            color: white;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: #667eea;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            margin-bottom: 15px;
         }
-        
-        .score-bar {
-            height: 24px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-            transition: width 0.5s ease;
+
+        .step-card h4 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.5em;
         }
-        
-        
-        .nav-menu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin: 30px 0;
         }
-        
-        .menu-dropdown {
+
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 60px;
+            border-left: 4px solid #667eea;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
             position: absolute;
-            right: 0;
-            top: 100%;
-            margin-top: 8px;
-            min-width: 250px;
-            max-height: 80vh;
-            overflow-y: auto;
+            left: -14px;
+            top: 25px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            box-shadow: 0 0 0 5px white, 0 0 0 8px #667eea;
         }
-        
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printable-document, #printable-document * {
-                visibility: visible;
-            }
-            #printable-document {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            .nav-menu {
-                display: none;
-            }
+
+        .timeline-item h4 {
+            margin-top: 0;
+            color: #667eea;
         }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .week-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .week-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .week-card h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .tradition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tradition-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-top: 5px solid;
+        }
+
+        .tradition-card.socratic { border-top-color: #3498db; }
+        .tradition-card.buddhist { border-top-color: #f39c12; }
+        .tradition-card.confucian { border-top-color: #e74c3c; }
+        .tradition-card.stoic { border-top-color: #2ecc71; }
+        .tradition-card.care { border-top-color: #9b59b6; }
+
+        .tradition-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .tradition-card h3 {
+            margin-top: 0;
+        }
+
+        .tradition-card.socratic h3 { color: #3498db; }
+        .tradition-card.buddhist h3 { color: #f39c12; }
+        .tradition-card.confucian h3 { color: #e74c3c; }
+        .tradition-card.stoic h3 { color: #2ecc71; }
+        .tradition-card.care h3 { color: #9b59b6; }
+
+        .interactive-demo {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 3px solid #667eea;
+        }
+
+        .demo-selector {
+            display: inline-block;
+            margin: 15px;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            font-weight: 600;
+        }
+
+        .demo-selector:hover {
+            border-color: #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-selector.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #764ba2;
+        }
+
+        .result-box {
+            background: #f0f7ff;
+            border: 3px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .key-point {
+            background: #e8f5e9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #4caf50;
+        }
+
+        .key-point h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+        }
+
+        .warning-box h4 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 35px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .highlight {
+            background: linear-gradient(180deg, transparent 60%, #ffeb3b70 60%);
+            padding: 2px 5px;
+            font-weight: 600;
+        }
+
+        blockquote {
+            border-left: 5px solid #667eea;
+            padding-left: 25px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #555;
+            background: #f8f9fa;
+            padding: 20px 20px 20px 25px;
+            border-radius: 5px;
+        }
+
+        .abcd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .abcd-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid;
+        }
+
+        .abcd-card.agency { border-top-color: #e74c3c; }
+        .abcd-card.beauty { border-top-color: #9b59b6; }
+        .abcd-card.context { border-top-color: #f39c12; }
+        .abcd-card.dynamics { border-top-color: #3498db; }
+
+        .abcd-card h4 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .abcd-card.agency h4 { color: #e74c3c; }
+        .abcd-card.beauty h4 { color: #9b59b6; }
+        .abcd-card.context h4 { color: #f39c12; }
+        .abcd-card.dynamics h4 { color: #3498db; }
+
+        .practice-example {
+            background: #fff;
+            border: 2px solid #667eea;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .practice-example h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .flow-diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .flow-item {
+            display: inline-block;
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            margin: 10px 5px;
+            font-weight: 600;
+        }
+
+        .flow-arrow {
+            display: inline-block;
+            margin: 0 15px;
+            color: #667eea;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4caf50;
+        }
+
+        .benefit-card h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+         @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            /* Keep nav-tabs horizontal but allow wrapping */
+            .nav-tabs { flex-direction: row; }
+            .tab-button { flex-grow: 1; text-align: center;} /* Allow buttons to grow */
+
+            .three-steps, .tradition-grid, .week-grid, .abcd-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-section { padding: 25px; }
+            .flow-item, .flow-arrow { display: block; margin: 10px auto; } /* Stack flow items */
+            .flow-arrow { transform: rotate(90deg); }
+        }
+
     </style>
 </head>
-<body class="bg-gray-50">
-    <div id="root"></div>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ethics as Capability Development</h1>
+            <p class="subtitle">A Read-Evaluate-Reconstruct Approach</p>
+            <p class="tagline">Teaching Students to Examine and Transform Themselves Using 2,500 Years of Practical Wisdom</p>
+        </header>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('overview', this)">Course Overview</button>
+            <button class="tab-button" onclick="showTab('mechanism', this)">Core Mechanism</button>
+            <button class="tab-button" onclick="showTab('structure', this)">Course Structure</button>
+            <button class="tab-button" onclick="showTab('tools', this)">Philosophical Tools</button>
+            <button class="tab-button" onclick="showTab('traditional', this)">Traditional Content</button>
+            <button class="tab-button" onclick="showTab('assessment', this)">Assessment</button>
+            <button class="tab-button" onclick="showTab('benefits', this)">Why This Works</button>
+            <button class="tab-button" onclick="showTab('demo', this)">Interactive Demo</button>
+        </nav>
 
-        // Utility Functions
-        const generateSessionId = () => {
-            const date = new Date();
-            const dateStr = date.toISOString().slice(0,10).replace(/-/g, '');
-            const timeStr = date.toTimeString().slice(0,5).replace(/:/g, '');
-            const random = Math.random().toString(36).substring(2, 8).toUpperCase();
-            return `M2-${dateStr}-${timeStr}-${random}`;
-        };
+        <div id="overview" class="content-section active">
+             <h2>Course Overview: A Radically Different Approach to Ethics</h2>
+              <div class="hero-box">
+                  <h3>The Central Question</h3>
+                  <p><strong>Traditional ethics course asks:</strong> "What should I believe about right and wrong?"</p>
+                  <p><strong>This course asks:</strong> "How can I develop the capability to examine and transform myself?"</p>
+              </div>
+              <h3>What Makes This Course Different</h3>
+              <div class="comparison-table">
+                  <table style="width: 100%;">
+                      <thead><tr><th>Traditional Ethics Course</th><th>This Capability-Based Course</th></tr></thead>
+                      <tbody>
+                          <tr><td>Teaches <strong>theories</strong></td><td>Teaches <strong>practices</strong></td></tr>
+                          <tr><td>Students <strong>learn about</strong> philosophers</td><td>Students <strong>practice like</strong> philosophers</td></tr>
+                          <tr><td>Abstract scenarios</td><td>Students' actual lives</td></tr>
+                          <tr><td>Passive learning</td><td>Active practice</td></tr>
+                          <tr><td>Success = good grade</td><td>Success = capability development</td></tr>
+                          <tr><td>Fragmented</td><td>Integrated</td></tr>
+                          <tr><td>Can ace course without changing</td><td>Cannot succeed without developing</td></tr>
+                      </tbody>
+                  </table>
+              </div>
+              <h3>Core Pedagogical Insight</h3>
+              <div class="mechanism-box">
+                  <h3>Experience → Practice → Understanding → Theory</h3>
+                  <p style="text-align: center; margin: 20px 0;">Students <strong>do</strong> the work for weeks before we name it.</p>
+                  <p style="text-align: center;"><strong>Result:</strong> Theory explains lived experience.</p>
+              </div>
+              <h3>What Students Actually Learn</h3>
+              <div class="benefits-grid">
+                  <div class="benefit-card"><h4>✓ The Reader Position</h4><p>Observe own thoughts/emotions</p></div>
+                  <div class="benefit-card"><h4>✓ Critical Self-Examination</h4><p>Tools for questioning patterns</p></div>
+                  <div class="benefit-card"><h4>✓ Deliberate Reconstruction</h4><p>Methods for changing habits</p></div>
+                  <div class="benefit-card"><h4>✓ Multiple Traditions</h4><p>Tools from Socratic, Buddhist, etc.</p></div>
+                  <div class="benefit-card"><h4>✓ Meta-Constructive Capability</h4><p>Ability to continue self-development</p></div>
+                  <div class="benefit-card"><h4>✓ Coordination Across Difference</h4><p>Work with different values</p></div>
+              </div>
+              <h3>Why Faculty Should Consider This Approach</h3>
+              <div class="key-point">
+                  <h4>Addresses Persistent Problems</h4>
+                  <ul>
+                      <li>Student disengagement</li>
+                      <li>No transfer</li>
+                      <li>No development</li>
+                      <li>Preparation gaps</li>
+                  </ul>
+                  <p><strong>This approach solves all four.</strong></p>
+              </div>
+              <div class="warning-box">
+                  <h4>⚠️ What This Requires from Instructor</h4>
+                  <ul><li>Shift from content delivery to facilitating practice</li><li>Model ongoing development</li><li>Comfort with value pluralism</li><li>Focus on capability, not "right answers"</li></ul>
+              </div>
+        </div>
 
-        const calculateAccuracy = (studentScores, expertScores) => {
-            const capacityDiff = Math.abs(studentScores.capacity - expertScores.capacity);
-            const capabilityDiff = Math.abs(studentScores.capability - expertScores.capability);
-            const constructorDiff = Math.abs(studentScores.constructor - expertScores.constructor);
-            const metaConstructorDiff = Math.abs(studentScores.metaConstructor - expertScores.metaConstructor);
-            
-            const avgDiff = (capacityDiff + capabilityDiff + constructorDiff + metaConstructorDiff) / 4;
-            let accuracy = Math.max(0, 100 - avgDiff);
-            
-            // Bonus for matching primary diagnosis
-            if (studentScores.primary === expertScores.primary) {
-                accuracy = Math.min(100, accuracy + 10);
+        <div id="mechanism" class="content-section">
+             <h2>The Core Mechanism: Read-Evaluate-Reconstruct</h2>
+              <div class="hero-box">
+                  <h3>The Discovery</h3>
+                  <p>Philosophers across cultures discovered: <span class="highlight">Humans can READ earlier selves, EVALUATE, and PRACTICE to RECONSTRUCT.</span></p>
+                  <p><strong>This is the actual mechanism of self-development.</strong></p>
+              </div>
+              <h3>How It Works: The Temporal Gap</h3>
+              <div class="flow-diagram">
+                  <h4>The Three-Step Cycle</h4>
+                  <div style="margin: 30px 0;">
+                      <div class="flow-item" style="background: #ffebee;">Time t<br><small>You act/think/feel</small></div>
+                      <span class="flow-arrow">→</span>
+                      <div class="flow-item" style="background: #e3f2fd;">Time t+1<br><small>You observe</small></div>
+                      <span class="flow-arrow">→</span>
+                      <div class="flow-item" style="background: #e8f5e9;">Time t+2<br><small>You practice differently</small></div>
+                  </div>
+                  <p style="margin-top: 30px;"><strong>Key insight:</strong> The temporal gap creates space for examination.</p>
+              </div>
+              <div class="three-steps">
+                  <div class="step-card"><div class="step-number">1</div><h4>READ</h4><p>Take reader position; earlier self is substrate</p><ul><li>"What did I do?"</li><li>"What pattern?"</li></ul></div>
+                  <div class="step-card"><div class="step-number">2</div><h4>EVALUATE</h4><p>Assess what you found</p><ul><li>"Did it work?"</li><li>"Align with values?"</li><li>"What's better?"</li></ul></div>
+                  <div class="step-card"><div class="step-number">3</div><h4>RECONSTRUCT</h4><p>Practice to change physical substrate (neural patterns)</p><ul><li>Practice responding differently</li><li>Question a belief</li></ul></div>
+              </div>
+              <h3>Why This Is Revolutionary</h3>
+              <div class="mechanism-box">
+                  <h3>The Physical Reality</h3>
+                  <p>Neuroscience:</p>
+                  <ul style="text-align: left; margin: 20px 40px;">
+                      <li>Habits/beliefs are <strong>physically encoded</strong></li>
+                      <li>Patterns are <strong>real substrate</strong></li>
+                      <li>Practice <strong>literally changes</strong> this substrate (neuroplasticity)</li>
+                      <li>"The doing shapes the being" is mechanism</li>
+                  </ul>
+              </div>
+              <h3>What All Philosophers Discovered</h3>
+              <div class="tradition-grid">
+                  <div class="tradition-card socratic"><h3>🏛️ Socrates</h3><p><strong>READ:</strong> Beliefs via questioning</p><p><strong>EVALUATE:</strong> Coherence</p><p><strong>RECONSTRUCT:</strong> Revise beliefs</p></div>
+                  <div class="tradition-card buddhist"><h3>🕉️ Buddha</h3><p><strong>READ:</strong> Mental states</p><p><strong>EVALUATE:</strong> Cause suffering?</p><p><strong>RECONSTRUCT:</strong> Train responses</p></div>
+                  <div class="tradition-card confucian"><h3>☯️ Confucius</h3><p><strong>READ:</strong> Actions in roles</p><p><strong>EVALUATE:</strong> Humane?</p><p><strong>RECONSTRUCT:</strong> Character via practice</p></div>
+                  <div class="tradition-card stoic"><h3>🏛️ Stoics</h3><p><strong>READ:</strong> Control boundary</p><p><strong>EVALUATE:</strong> Wasting energy?</p><p><strong>RECONSTRUCT:</strong> Focus on controllables</p></div>
+                  <div class="tradition-card care"><h3>💜 Care Ethics</h3><p><strong>READ:</strong> Relationships</p><p><strong>EVALUATE:</strong> Responsive?</p><p><strong>RECONSTRUCT:</strong> Practice care</p></div>
+              </div>
+              <div class="key-point">
+                  <h4>🔑 The Unifying Insight</h4>
+                  <p><strong>Same mechanism discovered independently across cultures.</strong></p>
+                  <p>They differ in what substrate they read, tools used, and reconstruction goals, but the process is identical.</p>
+              </div>
+              <h3>Teaching Strategy: Experience First, Theory Later</h3>
+              <div class="practice-example"><h4>Week 1-2: DO It Without Naming It</h4><p>Exercise: Describe choice → read as observer → what to do differently?</p></div>
+              <div class="practice-example"><h4>Week 3-10: Practice Different Tools</h4><p>Each week: One tradition's tool. Build skill.</p></div>
+              <div class="practice-example"><h4>Week 11: Name What They've Been Doing</h4><p>Reveal the pattern. Theory explains lived experience.</p></div>
+        </div>
+
+        <div id="structure" class="content-section">
+             <h2>Course Structure: 14 Weeks, Progressive Development</h2>
+              <div class="hero-box"><h3>Organizing Principle</h3><p>Everything builds from <strong>Read-Evaluate-Reconstruct</strong>.</p></div>
+              <h3>Four-Part Arc</h3>
+              <div class="timeline">
+                  <div class="timeline-item"><h4>Part 1: Foundation (Wk 1-4)</h4><p>Experience the basic cycle daily</p></div>
+                  <div class="timeline-item"><h4>Part 2: Philosophical Tools (Wk 5-10)</h4><p>Learn tools from traditions for reading different substrates</p></div>
+                  <div class="timeline-item"><h4>Part 3: Integration (Wk 11-12)</h4><p>Understand the pattern, design personal practice</p></div>
+                  <div class="timeline-item"><h4>Part 4: Meta-Level (Wk 13-14)</h4><p>Understand as lifelong capability, plan continuation</p></div>
+              </div>
+              <h3>Week-by-Week Overview</h3>
+              <div class="week-grid">
+                  <div class="week-card"><h4>Wk 1</h4><p>Discovering Your Superpower (Practice cycle)</p></div>
+                  <div class="week-card"><h4>Wk 2</h4><p>Why This Works (Neuroplasticity)</p></div>
+                  <div class="week-card"><h4>Wk 3</h4><p>Your PRF (Interpretive lens)</p></div>
+                  <div class="week-card"><h4>Wk 4</h4><p>Integration & Preview (Quiz 1)</p></div>
+                  <div class="week-card"><h4>Wk 5</h4><p>Socratic Tools (Read beliefs)</p></div>
+                  <div class="week-card"><h4>Wk 6</h4><p>Buddhist Tools (Read mental states)</p></div>
+                  <div class="week-card"><h4>Wk 7</h4><p>Confucian Tools (Read actions/roles)</p></div>
+                  <div class="week-card"><h4>Wk 8</h4><p>Stoic Tools (Read control boundary)</p></div>
+                  <div class="week-card"><h4>Wk 9</h4><p>Care Ethics Tools (Read relationships)</p></div>
+                  <div class="week-card"><h4>Wk 10</h4><p>Building Toolkit (Quiz 2)</p></div>
+                  <div class="week-card"><h4>Wk 11</h4><p>Understanding Meta-Construction (Reveal pattern)</p></div>
+                  <div class="week-card"><h4>Wk 12</h4><p>Your PRF & ABCD (Advanced framework)</p></div>
+                  <div class="week-card"><h4>Wk 13</h4><p>Looking Forward (5-year plan)</p></div>
+                  <div class="week-card"><h4>Wk 14</h4><p>Contemporary Applications</p></div>
+              </div>
+              <h3>Daily Practice Requirements</h3>
+              <div class="mechanism-box"><h3>Students Practice Every Day</h3><p><strong>Why:</strong> Capability needs repetition</p><p><strong>Amount:</strong> 10-15 minutes daily</p><p><strong>Evidence:</strong> Daily/weekly journals</p></div>
+              <div class="practice-example"><h4>Example Weekly Cycle (Wk 6: Buddhist)</h4><ul><li>Mon: Intro, in-class practice</li><li>Daily: 5 min meditation + journal</li><li>Wed: Debrief, impermanence concept</li><li>Weekend: 500-word reflection</li></ul></div>
+              <h3>Why This Structure Works</h3>
+              <div class="benefits-grid">
+                  <div class="benefit-card"><h4>✓ Cumulative</h4><p>Builds week to week</p></div>
+                  <div class="benefit-card"><h4>✓ Repeating Pattern</h4><p>Easy to follow</p></div>
+                  <div class="benefit-card"><h4>✓ Concrete to Abstract</h4><p>Grounded in experience</p></div>
+                  <div class="benefit-card"><h4>✓ Sustainable Practice</h4><p>Builds habits</p></div>
+                  <div class="benefit-card"><h4>✓ Multiple Entry Points</h4><p>Tools for everyone</p></div>
+                  <div class="benefit-card"><h4>✓ Clear Outcomes</h4><p>Visible development</p></div>
+              </div>
+        </div>
+
+        <div id="tools" class="content-section">
+             <h2>Philosophical Tools: Five Traditions, One Mechanism</h2>
+              <div class="hero-box"><h3>Reframing Philosophy</h3><p><strong>Not:</strong> Theories to memorize</p><p><strong>But:</strong> Tools for reading/reconstructing yourself</p></div>
+              <h3>Interactive Tool Explorer</h3>
+              <p><strong>Click on each tradition:</strong></p>
+              <div class="interactive-demo">
+                  <div class="demo-selector" onclick="showTool('socratic', this)"><strong>🏛️ Socratic</strong></div>
+                  <div class="demo-selector" onclick="showTool('buddhist', this)"><strong>🕉️ Buddhist</strong></div>
+                  <div class="demo-selector" onclick="showTool('confucian', this)"><strong>☯️ Confucian</strong></div>
+                  <div class="demo-selector" onclick="showTool('stoic', this)"><strong>🏛️ Stoic</strong></div>
+                  <div class="demo-selector" onclick="showTool('care', this)"><strong>💜 Care Ethics</strong></div>
+
+                  <div id="tool-socratic" class="result-box"><h3>🏛️ Socratic: Reading Beliefs</h3><p>Tool: Systematic questioning</p><div class="three-steps"><div class="step-card"><h4>READ</h4><p>"What do you believe?"</p></div><div class="step-card"><h4>EVALUATE</h4><p>"Is it coherent?"</p></div><div class="step-card"><h4>RECONSTRUCT</h4><p>Revise belief</p></div></div><p>Skill: Critical thinking</p></div>
+                  <div id="tool-buddhist" class="result-box"><h3>🕉️ Buddhist: Reading Mental States</h3><p>Tool: Mindfulness</p><div class="three-steps"><div class="step-card"><h4>READ</h4><p>"Anger is present"</p></div><div class="step-card"><h4>EVALUATE</h4><p>"Does it serve me?"</p></div><div class="step-card"><h4>RECONSTRUCT</h4><p>Choose response</p></div></div><p>Skill: Emotional regulation</p></div>
+                  <div id="tool-confucian" class="result-box"><h3>☯️ Confucian: Reading Actions</h3><p>Tool: Role practice (Xiu shen)</p><div class="three-steps"><div class="step-card"><h4>READ</h4><p>"How did I act?"</p></div><div class="step-card"><h4>EVALUATE</h4><p>"Was it humane?"</p></div><div class="step-card"><h4>RECONSTRUCT</h4><p>Practice behavior</p></div></div><p>Skill: Character development</p></div>
+                  <div id="tool-stoic" class="result-box"><h3>🏛️ Stoic: Reading Control</h3><p>Tool: Dichotomy of Control</p><div class="three-steps"><div class="step-card"><h4>READ</h4><p>"What's upsetting?"</p></div><div class="step-card"><h4>EVALUATE</h4><p>"Controllable?"</p></div><div class="step-card"><h4>RECONSTRUCT</h4><p>Focus on controllables</p></div></div><p>Skill: Resilience</p></div>
+                  <div id="tool-care" class="result-box"><h3>💜 Care Ethics: Reading Relationships</h3><p>Tool: Attentive care</p><div class="three-steps"><div class="step-card"><h4>READ</h4><p>"What does THIS person need?"</p></div><div class="step-card"><h4>EVALUATE</h4><p>"Is response caring?"</p></div><div class="step-card"><h4>RECONSTRUCT</h4><p>Practice responsiveness</p></div></div><p>Skill: Relationship building</p></div>
+              </div>
+              <h3>Why Multiple Tools?</h3>
+              <div class="key-point"><h4>Different Tools for Different Challenges</h4><p>Students build personalized toolkit based on needs.</p></div>
+              <div class="mechanism-box"><h3>But All Tools Share the Same Foundation</h3><p style="text-align: center; font-size: 1.3em; margin: 20px 0;"><strong>Read → Evaluate → Reconstruct</strong></p><p>Tools are compatible variations on one mechanism.</p></div>
+        </div>
+
+        <div id="traditional" class="content-section">
+             <h2>All Traditional Content Included—Enhanced Through Capability Lens</h2>
+              <div class="hero-box"><h3>✓ Nothing Is Lost, Everything Is Gained</h3><p>All traditional theories covered as <span class="highlight">capability-development tools</span>.</p></div>
+              <h3>How Traditional Theories Fit</h3>
+              <div class="mechanism-box"><h3>The Reframe</h3><p style="font-size: 1.2em; text-align: center; margin: 20px 0;"><strong>Not:</strong> "Which theory is correct?"<br><strong>But:</strong> "Which tool helps you most?"</p></div>
+              <h3>Traditional Theories as Capability Development Methods</h3>
+              <div class="tradition-grid">
+                  <div class="tradition-card confucian"><h3>Virtue Ethics</h3><p>Content: Eudaimonia, arete, habituation</p><p>Practice: Habituate chosen virtue daily</p><p>Understand: Character as developed capability</p></div>
+                  <div class="tradition-card stoic"><h3>Consequentialism</h3><p>Content: Utilitarianism, calculating outcomes</p><p>Practice: Predict consequences before acting</p><p>Understand: Tool for impact assessment</p></div>
+                  <div class="tradition-card socratic"><h3>Deontology</h3><p>Content: Categorical imperative, universalizability</p><p>Practice: Apply universalizability test to own maxims</p><p>Understand: Tool for principled reasoning</p></div>
+                  <div class="tradition-card buddhist"><h3>Social Contract</h3><p>Content: State of nature, Rawls' original position</p><p>Practice: Use veil of ignorance for fairness reasoning</p><p>Understand: Tool for coordination thinking</p></div>
+                  <div class="tradition-card care"><h3>Care Ethics</h3><p>Content: Relational ethics, context, responsiveness</p><p>Practice: Attentive listening in relationships</p><p>Understand: Tool for relational responsiveness</p></div>
+              </div>
+              <h3>Critical Thinking Skills: Woven Throughout</h3>
+              <div class="key-point"><h4>🧠 Critical Thinking as Foundational Capability</h4><p>All standard CT skills practiced daily in journals.</p></div>
+              <p>Skills like Argument Analysis, Identifying Assumptions, Evaluating Evidence, Recognizing Fallacies, Considering Alternatives, Systematic Analysis, and Metacognition are practiced weekly through specific exercises tied to the philosophical tools.</p>
+              <h3>Revised Schedule Showing Content</h3>
+               <p>The 14-week schedule integrates traditional content logically: Foundations (Wk 1-4, incl. Critical Thinking), Tools (Wk 5-10, covering Socratic, Deontology, Virtue, Consequentialism, Care, Social Contract as practices), Integration (Wk 11-12, Meta-ethics, Pluralism), Application (Wk 13-14).</p>
+               <h3>Comparison: Content Coverage</h3>
+               <p>This course covers all standard introductory ethics theories (Virtue, Consequentialism, Deontology, Social Contract, Care) PLUS additional traditions (Socratic, Buddhist, Confucian, Stoic) AND integrates critical thinking practice throughout, framed as capability development.</p>
+               <div class="mechanism-box"><h3>The Enhancement</h3><p style="text-align: center; font-size: 1.2em; margin: 20px 0;">Practice theories → Develop skills → Use for life</p></div>
+               <h3>How Theories Integrate</h3>
+               <div class="practice-example"><h4>Real Example: Plagiarism Dilemma</h4><p>Instead of "Which theory is right?", students use ALL theories as tools to READ the situation comprehensively (principles, outcomes, character, relationships, fairness, assumptions, emotional state, control) to make an informed choice.</p></div>
+               <h3>What Faculty Review Sees</h3>
+               <div class="key-point"><h4>✓ Meets All Standard Learning Outcomes</h4><p>Students can explain theories, apply them, think critically, engage texts, compare approaches, argue effectively, AND demonstrate developed capabilities.</p></div>
+        </div>
+
+        <div id="assessment" class="content-section">
+             <h2>Assessment: Measuring Actual Development</h2>
+              <div class="hero-box"><h3>Assessment Philosophy</h3><p><strong>Not:</strong> Explain theories on exam?</p><p><strong>But:</strong> Demonstrate capability through practice?</p></div>
+              <h3>Assessment Structure (100%)</h3>
+              <table class="comparison-table">
+                  <thead><tr><th>Component</th><th>Weight</th><th>Measures</th></tr></thead>
+                  <tbody>
+                      <tr><td>Weekly Journals (x10)</td><td>40%</td><td>Practice, reflection, application, depth</td></tr>
+                      <tr><td>Quizzes (x2)</td><td>20%</td><td>Concept comprehension</td></tr>
+                      <tr><td>Practice Demo (Daily Logs)</td><td>15%</td><td>Consistency of daily practice</td></tr>
+                      <tr><td>Integration Paper</td><td>10%</td><td>Understanding mechanism across traditions</td></tr>
+                      <tr><td>Final Reflection</td><td>15%</td><td>Capability development, PRF understanding, future plan</td></tr>
+                  </tbody>
+              </table>
+              <h3>Detailed Rubrics</h3>
+              <div class="practice-example"><h4>Weekly Journal Rubric (20 pts)</h4><p>Graded on: Evidence of Practice (5), Honest Reflection (5), Concept Application (5), Depth of Self-Examination (5). NOT graded on "right answers".</p></div>
+              <div class="practice-example"><h4>Final Reflection Rubric (100 pts)</h4><p>Graded on: Evidence of Development (30), Understanding Mechanism (20), ABCD Application (20), PRF Understanding (15), Continued Practice Plan (15).</p></div>
+              <h3>Why This Assessment Works</h3>
+              <div class="benefits-grid">
+                  <div class="benefit-card"><h4>✓ Low-Stakes, High-Practice</h4><p>Reduces anxiety, encourages engagement.</p></div>
+                  <div class="benefit-card"><h4>✓ Aligned with Goals</h4><p>Assesses capability development.</p></div>
+                  <div class="benefit-card"><h4>✓ Respects Diversity</h4><p>Graded on practice quality, not values.</p></div>
+                  <div class="benefit-card"><h4>✓ Impossible to Fake</h4><p>Real development becomes visible.</p></div>
+                  <div class="benefit-card"><h4>✓ Growth-Oriented</h4><p>Focus on trajectory.</p></div>
+                  <div class="benefit-card"><h4>✓ Manageable to Grade</h4><p>Clear rubrics.</p></div>
+              </div>
+              <h3>Sample Quiz Questions</h3>
+              <div class="practice-example"><h4>Quiz 1 Samples</h4><p>1. The R-E-R cycle works because: b) At t+1, you observe t self as substrate.</p><p>2. Your PRF is: b) The lens through which you experience reality.</p><p>3. "Doing shapes being" means: c) Repeated practice rewires you.</p><p>4. Short answer: Example of taking reader position.</p></div>
+              <div class="warning-box"><h4>⚠️ What This Doesn't Assess</h4><ul><li>"Right answers" to dilemmas</li><li>Requires sharing trauma</li><li>Having certain values</li><li>Perfection</li><li>"Virtue" itself</li></ul></div>
+        </div>
+
+        <div id="benefits" class="content-section">
+             <h2>Why This Approach Works: Evidence and Rationale</h2>
+             <div class="hero-box"><h3>The Core Claim</h3><p>Teaches <span class="highlight">capabilities through practice</span>, not theories through lectures.</p></div>
+             <h3>Problems with Traditional Ethics Courses & Solutions</h3>
+             <div class="comparison-table">
+                 <table style="width: 100%;">
+                     <thead><tr><th>Problem</th><th>Why</th><th>Solution</th></tr></thead>
+                     <tbody>
+                         <tr><td>Disengagement</td><td>Abstract</td><td>Work on own life</td></tr>
+                         <tr><td>No Transfer</td><td>Can't apply</td><td>Practice transferable skills</td></tr>
+                         <tr><td>No Development</td><td>Memorizing ≠ change</td><td>Daily practice rewires</td></tr>
+                         <tr><td>Access Issues</td><td>Abstract barrier</td><td>Concrete practice first</td></tr>
+                         <tr><td>Fragmentation</td><td>No coherence</td><td>One mechanism throughout</td></tr>
+                         <tr><td>Relativism</td><td>"Just opinion"</td><td>Compatible capabilities</td></tr>
+                     </tbody>
+                 </table>
+             </div>
+             <h3>Evidence This Works</h3>
+             <div class="key-point"><h4>📊 Pedagogical Research</h4><p>Applies principles of Active Learning, Deliberate Practice, Metacognition, Growth Mindset, Self-Regulated Learning.</p></div>
+             <h3>Why Design Choices Matter</h3>
+             <div class="benefits-grid">
+                 <div class="benefit-card"><h4>Daily Practice</h4><p>Builds habits (neuroscience)</p></div>
+                 <div class="benefit-card"><h4>Experience Before Theory</h4><p>Grounded learning (constructivism)</p></div>
+                 <div class="benefit-card"><h4>Single Principle</h4><p>Integrated knowledge (schema theory)</p></div>
+                 <div class="benefit-card"><h4>Multiple Tools</h4><p>Personalized learning (UDL)</p></div>
+                 <div class="benefit-card"><h4>Low-Stakes Assessment</h4><p>Reduces anxiety (testing effect)</p></div>
+                 <div class="benefit-card"><h4>Respecting Diversity</h4><p>Increases motivation (SDT)</p></div>
+             </div>
+             <h3>Effective for Underprepared Students</h3>
+             <div class="mechanism-box"><h3>Accessibility Without Dumbing Down</h3><p>Concrete start, short readings, scaffolds, repetition, multiple tools, growth focus.</p></div>
+             <h3>Transferable Skills Beyond Ethics</h3>
+             <div class="benefits-grid">
+                 <div class="benefit-card"><h4>✓ Critical Thinking</h4></div>
+                 <div class="benefit-card"><h4>✓ Emotional Regulation</h4></div>
+                 <div class="benefit-card"><h4>✓ Professional Development</h4></div>
+                 <div class="benefit-card"><h4>✓ Resilience</h4></div>
+                 <div class="benefit-card"><h4>✓ Relationship Skills</h4></div>
+                 <div class="benefit-card"><h4>✓ Self-Directed Learning</h4></div>
+             </div>
+             <h3>Comparison to Other Approaches</h3>
+             <p>Combines strengths: intellectual rigor (Theory Survey), relevance (Applied Ethics), character focus (Virtue Ethics), transformative practice (Contemplative) into one coherent framework.</p>
+             <div class="key-point"><h4>🎯 The Synthesis</h4><p>Rigorous, practical, transformative, accessible.</p></div>
+        </div>
+
+        <div id="demo" class="content-section">
+             <h2>Interactive Demo: Try the Read-Evaluate-Reconstruct Cycle</h2>
+              <div class="hero-box"><h3>Experience the Mechanism</h3><p>Work through this demo.</p></div>
+              <h3>Demo Exercise: Examining a Recent Choice</h3>
+              <div class="interactive-demo" style="text-align: left;">
+                  <h4>Step 1: CREATE SUBSTRATE</h4>
+                  <p>Describe a choice that didn't go well:</p>
+                  <textarea id="substrate-text" rows="4" style="width: 100%; padding: 15px; border: 2px solid #667eea; border-radius: 8px; font-size: 1em; margin: 15px 0;"></textarea>
+                  <button onclick="analyzeSubstrate()" class="tab-button" style="background: #667eea; color: white;">Proceed to Step 2: READ</button>
+
+                  <div id="read-step" style="display: none; margin-top: 30px; padding: 25px; background: #e3f2fd; border-radius: 10px;">
+                      <h4>Step 2: READ (Reader position)</h4>
+                      <p>Read what you wrote as if observing someone else. What patterns?</p>
+                      <ul><li>What trying to do?</li><li>Feeling?</li><li>Assumptions?</li><li>Pattern?</li></ul>
+                      <p style="margin-top: 20px;">Your reading:</p>
+                      <textarea id="read-text" rows="4" style="width: 100%; padding: 15px; border: 2px solid #2196f3; border-radius: 8px; font-size: 1em; margin: 10px 0;"></textarea>
+                      <button onclick="showEvaluate()" class="tab-button" style="background: #2196f3; color: white;">Proceed to Step 3: EVALUATE</button>
+                  </div>
+
+                  <div id="evaluate-step" style="display: none; margin-top: 30px; padding: 25px; background: #fff3e0; border-radius: 10px;">
+                      <h4>Step 3: EVALUATE</h4>
+                      <p>Did this pattern serve you well? What would work better?</p>
+                      <ul><li>Achieve goal?</li><li>Align values?</li><li>Consequences?</li><li>Wiser response?</li></ul>
+                      <p style="margin-top: 20px;">Your evaluation:</p>
+                      <textarea id="evaluate-text" rows="4" style="width: 100%; padding: 15px; border: 2px solid #ff9800; border-radius: 8px; font-size: 1em; margin: 10px 0;"></textarea>
+                      <button onclick="showReconstruct()" class="tab-button" style="background: #ff9800; color: white;">Proceed to Step 4: RECONSTRUCT</button>
+                  </div>
+
+                  <div id="reconstruct-step" style="display: none; margin-top: 30px; padding: 25px; background: #e8f5e9; border-radius: 10px;">
+                      <h4>Step 4: RECONSTRUCT</h4>
+                      <p>What ONE specific thing could you practice this week?</p>
+                      <ul><li>Not: "Be patient"</li><li>But: "When frustrated, take 3 breaths"</li></ul>
+                      <p style="margin-top: 20px;">Your practice commitment:</p>
+                      <textarea id="reconstruct-text" rows="3" style="width: 100%; padding: 15px; border: 2px solid #4caf50; border-radius: 8px; font-size: 1em; margin: 10px 0;"></textarea>
+                      <button onclick="showCompletion()" class="tab-button" style="background: #4caf50; color: white;">See What You Just Did</button>
+                  </div>
+
+                  <div id="completion-step" style="display: none; margin-top: 30px; padding: 30px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border: 3px solid #667eea; border-radius: 10px;">
+                      <h3 style="color: #667eea; text-align: center;">🎉 You Just Experienced Meta-Construction!</h3>
+                      <p style="font-size: 1.2em; margin: 20px 0;"><strong>What happened:</strong></p>
+                      <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;"><p><strong>1. Created substrate:</strong> Externalized choice</p></div>
+                      <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;"><p><strong>2. Took reader position:</strong> Used temporal gap</p></div>
+                      <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;"><p><strong>3. Evaluated:</strong> Assessed using your PRF</p></div>
+                      <div style="background: white; padding: 20px; border-radius: 8px; margin: 15px 0;"><p><strong>4. Designed reconstruction:</strong> Planned specific practice</p></div>
+                      <h4 style="margin-top: 30px; color: #667eea;">This is the mechanism all philosophical traditions discovered.</h4>
+                      <p style="font-size: 1.2em; margin-top: 25px; text-align: center;"><strong>Same mechanism, different applications.</strong></p>
+                      <p style="margin-top: 25px; text-align: center;">Students do this daily for 14 weeks.</p>
+                  </div>
+              </div>
+              <h3 style="margin-top: 50px;">What Students Learn Over Time</h3>
+              <div class="benefits-grid">
+                  <div class="benefit-card"><h4>Wk 1-4: Foundation</h4><p>Practice daily cycle</p></div>
+                  <div class="benefit-card"><h4>Wk 5-10: Tools</h4><p>Learn 5 methods for reading</p></div>
+                  <div class="benefit-card"><h4>Wk 11-12: Integration</h4><p>Understand unified mechanism</p></div>
+                  <div class="benefit-card"><h4>Wk 13-14: Continuation</h4><p>Commit to lifelong practice</p></div>
+              </div>
+              <div class="mechanism-box" style="margin-top: 40px;"><h3>The Result</h3><p style="text-align: center; font-size: 1.2em;">Students don't just know about—they <strong>can do</strong> philosophy.</p></div>
+        </div>
+
+    </div> <script>
+        // Tab navigation
+        function showTab(tabName, buttonElement) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            const targetSection = document.getElementById(tabName);
+            if (targetSection) {
+                 targetSection.classList.add('active');
+            } else {
+                 console.error("Target section not found:", tabName);
+                 return; // Exit if section doesn't exist
             }
-            
-            return Math.round(accuracy);
-        };
 
-        const determineSkillLevel = (accuracy) => {
-            if (accuracy >= 85) return 'Proficient';
-            if (accuracy >= 70) return 'Developing';
-            return 'Novice';
-        };
-
-        // Enhanced Storage Management for Multiple Completions
-        const loadProgressData = () => {
-            const saved = localStorage.getItem('module2ProgressEnhanced');
-            if (saved) {
-                return JSON.parse(saved);
+            if (buttonElement) { // Ensure the button element exists
+                 buttonElement.classList.add('active');
+            } else {
+                 console.error("Button element not passed to showTab for:", tabName);
             }
-            return {
-                completions: [], // Array of completed sessions
-                currentSession: null // In-progress session
-            };
-        };
 
-        const saveProgressData = (data) => {
-            localStorage.setItem('module2ProgressEnhanced', JSON.stringify(data));
-        };
+            // Scroll slightly below the sticky nav bar instead of absolute top
+            const navBar = document.querySelector('.nav-tabs');
+            const navBarHeight = navBar ? navBar.offsetHeight : 0;
+            const offset = 20; // Extra space below nav
 
-        const clearAllProgress = () => {
-            if (confirm('This will delete ALL your saved work and completions. Are you sure?')) {
-                localStorage.removeItem('module2ProgressEnhanced');
-                window.location.reload();
+            // Find the top position of the content section relative to the viewport
+            const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+
+            window.scrollTo({
+                 top: sectionTop - navBarHeight - offset,
+                 behavior: 'smooth'
+            });
+        }
+
+
+        // Tool explorer in 'tools' section
+        function showTool(toolName, element) {
+            // Find the parent '.interactive-demo' to scope the search
+            const demoContainer = element.closest('.interactive-demo');
+            if (!demoContainer) return;
+
+            const boxes = demoContainer.querySelectorAll('.result-box[id^="tool-"]');
+            boxes.forEach(box => box.classList.remove('show'));
+
+            const selectors = demoContainer.querySelectorAll('.demo-selector');
+            selectors.forEach(s => s.classList.remove('selected'));
+
+            const targetBox = demoContainer.querySelector('#tool-' + toolName);
+            if (targetBox) {
+                targetBox.classList.add('show');
             }
-        };
+             if (element) {
+                 element.classList.add('selected');
+             }
+        }
 
+        // --- Demo exercise functions ---
+        // Ensure these target elements within the #demo section specifically
 
-        // Expert Diagnoses Data
-        const EXPERT_DIAGNOSES = {
-            case1: {
-                capacity: 85,
-                capability: 15,
-                constructor: 30,
-                metaConstructor: 20,
-                primary: 'capacity',
-                explanation: 'This is primarily a capacity suppression problem. The nurses clearly have the capacity for compassion (they entered the field because of it and show empathy with family), but chronic stress, impossible workloads, and constant exposure to suffering are preventing expression of this capacity. The biological substrates are being degraded by chronic stress (Sapolsky). This is NOT a capability gap - they know how to be compassionate. It\'s that the context is overwhelming their ability to express it.',
-                commonMistake: 'Students often misdiagnose this as a capability gap (need more training in compassion). But notice they USED to perform well and still show compassion outside work - that indicates capacity exists but is suppressed by context.'
-            },
-            case2: {
-                capacity: 20,
-                capability: 80,
-                constructor: 30,
-                metaConstructor: 15,
-                primary: 'capability',
-                explanation: 'This is a capability gap problem. People have the capacity for ethical reasoning and want to do the right thing, but lack reliable protocols and procedures for actually implementing ethics in their specific roles. Teaching abstract principles doesn\'t help because the problem isn\'t values - it\'s the absence of clear, practiced, reliable methods for ethical action in context. They need capability development: clear specifications, practiced procedures, and reliable patterns of coordination.',
-                commonMistake: 'Students sometimes think this is a constructor problem (need to institutionalize). But you can\'t institutionalize what doesn\'t exist yet - first you need to develop the capabilities, THEN institutionalize them.'
-            },
-            case3: {
-                capacity: 25,
-                capability: 40,
-                constructor: 85,
-                metaConstructor: 20,
-                primary: 'constructor',
-                explanation: 'This is a constructor failure. The ethical practices were working but depended entirely on the founder\'s personal presence rather than being institutionalized in structures, rituals, and norms that persist across personnel changes. When the founder left, the knowledge and practices left too. This shows the patterns were never properly built into persistent constructors - they were capability-level (worked when the founder used them) but never became constructor-level (work automatically and persist).',
-                commonMistake: 'Students might think this is capacity suppression (people lost motivation). But the issue is that practices weren\'t institutionalized - they need to rebuild constructors that don\'t depend on any individual.'
-            },
-            case4: {
-                capacity: 30,
-                capability: 35,
-                constructor: 40,
-                metaConstructor: 85,
-                primary: 'metaConstructor',
-                explanation: 'This is a meta-constructor absence problem. The policy is causing clear harm but there\'s no mechanism to examine, challenge, or revise it. The system cannot learn from mistakes or adapt to new information. This is the absence of meta-constructor capacity at the institutional level - no review mechanisms, no sunset clauses, no safe channels for challenge, no learning loops. The system is locked in and cannot improve itself.',
-                commonMistake: 'Students might focus on the bad policy content (a capability problem). But the deeper issue is that there\'s no way to FIX bad policies when discovered - that\'s the meta-constructor problem.'
-            },
-            case5: {
-                capacity: 70,
-                capability: 60,
-                constructor: 40,
-                metaConstructor: 30,
-                primary: 'capacity',
-                explanation: 'This is a multi-level problem requiring integrated intervention. PRIMARY: Capacity suppression - students are chronically stressed, sleep-deprived, and overloaded, which degrades their ability to learn and make good decisions. SECONDARY: Capability gap - many lack effective study skills and time management. TERTIARY: Constructor failure - a culture of cheating has normalized unethical behavior. Must address all levels, but start with capacity (reduce stressors, provide support) while simultaneously building capabilities and changing culture.',
-                commonMistake: 'Students often jump to "it\'s the culture" (constructor) and miss that stressed, desperate students with poor study skills are being pushed toward cheating by impossible circumstances. Must address context first.'
-            },
-            case6: {
-                capacity: 50,
-                capability: 55,
-                constructor: 65,
-                metaConstructor: 45,
-                primary: 'various',
-                explanation: 'This ambiguous case has multiple reasonable interpretations. Is the family\'s capacity being suppressed by their beliefs, or do they have different but equally valid values? Is this a capability gap (they don\'t understand medical facts) or a genuine value difference? Reasonable people can disagree. Key insight: Sometimes diagnostic uncertainty means we need MORE INFORMATION before intervening. Humility about our ability to diagnose others\' capacity, especially across cultural/religious differences, is essential. Whatever your diagnosis, you must defend it with evidence and acknowledge uncertainty.',
-                commonMistMistake: 'Rushing to judgment without acknowledging legitimate ambiguity and the need for more information, especially in cross-cultural contexts.'
+        function getDemoElement(id) {
+            const demoSection = document.getElementById('demo');
+            if (!demoSection) return null;
+            return demoSection.querySelector(`#${id}`);
+        }
+
+        function analyzeSubstrate() {
+             const substrateTextEl = getDemoElement('substrate-text');
+             const readStepEl = getDemoElement('read-step');
+             if (!substrateTextEl || !readStepEl) return; // Exit if elements not found
+
+            if (!substrateTextEl.value.trim()) {
+                alert('Please describe a recent choice first.');
+                return;
             }
-        };
+            readStepEl.style.display = 'block';
+            readStepEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to center
+        }
 
-        // Cases Data
-        const CASES = [
-            {
-                id: 'case1',
-                title: 'The Burned-Out Nurses',
-                difficulty: 1,
-                domain: 'Healthcare',
-                scenario: `St. Mary's Hospital has been experiencing a troubling pattern over the past 18 months. Nurses who were once known for their compassionate care are increasingly showing signs of emotional detachment. Patients complain about curt responses and lack of empathy. Family members report nurses seeming "checked out" or irritable.
+        function showEvaluate() {
+             const readTextEl = getDemoElement('read-text');
+             const evaluateStepEl = getDemoElement('evaluate-step');
+             if (!readTextEl || !evaluateStepEl) return;
 
-However, when you look at individual nurses' backgrounds, they all entered healthcare because of genuine compassion. They volunteer in their communities. They show deep empathy with their own families. Some were voted "most compassionate" just a few years ago.
+            if (!readTextEl.value.trim()) {
+                alert('Please complete your reading first.');
+                return;
+            }
+            evaluateStepEl.style.display = 'block';
+            evaluateStepEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-The context: The hospital has been chronically understaffed due to budget cuts. Nurses regularly work 12-14 hour shifts with minimal breaks. They're required to care for 8-10 patients each when best practice recommends 4-5. Many report having no time to properly care for patients - having to rush through basic needs. Moral injury is common: knowing what patients need but being unable to provide it. Staff meetings have been cancelled. There's constant exposure to suffering and death without time for processing.`,
-                stakeholders: 'Nurses (burned out), Patients (receiving substandard care), Hospital administrators (budget constraints), Families (concerned)',
-                context: 'Chronic understaffing, impossible workloads, budget cuts, no processing time, moral injury',
-                problem: 'Previously compassionate nurses showing reduced empathy and care quality',
-                question: 'What level is the primary problem, and what type of intervention is needed?'
-            },
-            {
-                id: 'case2',
-                title: 'The Ethics Training Failure',
-                difficulty: 1,
-                domain: 'Business',
-                scenario: `TechCorp brought in expensive ethics consultants to address concerning behavior: favoritism in promotions, inconsistent standards, occasional harassment going unaddressed. The consultants provided comprehensive training on ethical principles, values, and moral philosophy. Everyone completed the training. Exit surveys showed people found it "inspiring" and felt motivated to "do better."
+        function showReconstruct() {
+             const evaluateTextEl = getDemoElement('evaluate-text');
+             const reconstructStepEl = getDemoElement('reconstruct-step');
+             if (!evaluateTextEl || !reconstructStepEl) return;
 
-Three months later, nothing has changed. The same problems persist. When you interview employees, they say things like: "I want to be fair, but how do I actually decide between candidates when both are qualified?" "I know harassment is wrong, but what specifically do I say when I witness it?" "The values are great but there's no clear process for applying them."
+            if (!evaluateTextEl.value.trim()) {
+                alert('Please complete your evaluation first.');
+                return;
+            }
+            reconstructStepEl.style.display = 'block';
+            reconstructStepEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-The context: TechCorp has vague policies that say things like "be ethical" and "treat people fairly" but no clear protocols for specific situations. There's no standardized interview process, no clear guidelines for addressing harassment, no consistent performance evaluation criteria. Managers are left to "use their judgment" with no training in how to implement that judgment reliably.`,
-                stakeholders: 'Employees (want to do right but unsure how), Managers (lack clear protocols), Ethics consultants (taught principles, not practices)',
-                context: 'Vague policies, no clear protocols, no standardized processes, "use your judgment" without guidance',
-                problem: 'Ethics training doesn\'t translate to behavior change',
-                question: 'Why didn\'t the ethics training work, and what\'s actually needed?'
-            },
-            {
-                id: 'case3',
-                title: 'When the Founder Leaves',
-                difficulty: 1,
-                domain: 'Organizational',
-                scenario: `GreenFuture, a sustainable business consultancy, was founded by Maya Chen, a charismatic leader deeply committed to both environmental and social ethics. Under her leadership, the company had an outstanding reputation. They turned down lucrative contracts if clients wouldn't commit to genuine sustainability. Employees felt empowered to raise ethical concerns. Regular meetings addressed dilemmas thoughtfully.
+        function showCompletion(){
+             const reconstructTextEl = getDemoElement('reconstruct-text');
+             const completionStepEl = getDemoElement('completion-step');
+             if (!reconstructTextEl || !completionStepEl) return;
 
-Maya was the person everyone went to with questions. She personally modeled ethical decision-making. She told stories that conveyed the company's values. She made final calls on difficult trade-offs. When she announced her retirement, everyone was nervous but assumed her deputy would maintain the culture.
+            if (!reconstructTextEl.value.trim()) {
+                alert('Please complete your reconstruction plan first.');
+                return;
+            }
+            completionStepEl.style.display = 'block';
+            completionStepEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-Within six months of Maya's departure, things fell apart. The deputy didn't have Maya's moral clarity. Without her stories and personal example, people lost confidence in their own
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Ethics Course Framework loaded successfully!');
+             // Add accessibility roles and tabindex where needed
+             document.querySelectorAll('.tab-button, .demo-selector, .week-card').forEach(el => {
+                 if (!el.hasAttribute('role')) {
+                     el.setAttribute('role', 'button');
+                 }
+                 if (!el.hasAttribute('tabindex') && el.tagName !== 'BUTTON') {
+                     el.setAttribute('tabindex', '0');
+                 }
+                 // Add keypress listener for non-button elements
+                 if (el.tagName !== 'BUTTON') {
+                     el.addEventListener('keypress', function(e) {
+                         if (e.key === 'Enter' || e.key === ' ') {
+                             e.preventDefault();
+                             this.click();
+                         }
+                     });
+                 }
+             });
+        });
+
+         // Keyboard navigation for main tabs
+        document.addEventListener('keydown', function(e) {
+            // Check if focus is inside an input/textarea to avoid interference
+            const activeElement = document.activeElement;
+            if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable)) {
+                return; // Don't navigate if user is typing
+            }
+
+            const navTabs = document.querySelector('.nav-tabs');
+             if (!navTabs || !navTabs.contains(activeElement)) { // Only navigate if focus is near the tabs or body
+                 const tabButtons = Array.from(document.querySelectorAll('.nav-tabs .tab-button'));
+                 const currentActiveButton = document.querySelector('.nav-tabs .tab-button.active');
+                 let currentIndex = tabButtons.indexOf(currentActiveButton);
+
+                 if (e.key === 'ArrowRight') {
+                      e.preventDefault(); // Prevent page scroll
+                     const nextIndex = (currentIndex + 1) % tabButtons.length;
+                     if (tabButtons[nextIndex]) tabButtons[nextIndex].click();
+                 } else if (e.key === 'ArrowLeft') {
+                      e.preventDefault(); // Prevent page scroll
+                     const prevIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+                     if (tabButtons[prevIndex]) tabButtons[prevIndex].click();
+                 }
+            }
+        });
+
+    </script>
+</body>
+</html>
